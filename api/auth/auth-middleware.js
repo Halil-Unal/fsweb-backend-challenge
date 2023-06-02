@@ -59,7 +59,12 @@ const checkPayload = (req,res,next)=>{
     let {username,password,email} = req.body;
     if(!username || !password|| !email){
       res.status(400).json({messsage:"Eksik alan var"});
-    }else{
+    }if(username.length<3 || password.length<3){
+      res.status(400).json({messsage:"Kullanıcı adı ve şifre 3 karakterden az olamaz"});
+    }
+    
+    
+    else{
       next();
     }
   } catch (error) {
