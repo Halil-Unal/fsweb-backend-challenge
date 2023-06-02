@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { usernameVarmi, rolAdiGecerlimi,checkPayload } = require('./auth-middleware');
+const { usernameVarmi,checkPayload } = require('./auth-middleware');
 const { JWT_SECRET } = require("../secrets"); 
 const jwt = require("jsonwebtoken");
 const bcryptjs = require("bcryptjs");

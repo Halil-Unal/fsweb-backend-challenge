@@ -70,7 +70,6 @@ const checkPayload = (req,res,next)=>{
 module.exports = {
   sinirli,
   usernameVarmi,
-  rolAdiGecerlimi,
-  sadece,
+
   checkPayload
 }
