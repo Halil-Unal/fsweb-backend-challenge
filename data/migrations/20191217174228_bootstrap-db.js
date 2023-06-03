@@ -8,7 +8,7 @@ exports.up = function (knex) {
     })
     .createTable('comments', comments => {
       comments.increments('comment_id')
-      comments.string('comment_text', 32)
+      comments.string('comment_text', 32).unique()
       comments
         .integer('user_id')
         .unsigned()
