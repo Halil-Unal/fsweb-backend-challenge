@@ -61,11 +61,11 @@ const checkPayload = (req, res, next) => {
       res.status(400).json({ message: "Eksik alan var" });
       return; // Hata durumunda işlemi sonlandır
     }
-    if (username.length < 3 || password.length < 3) {
+    if (username.trim().length < 3 || password.trim().length < 3) {
       res.status(400).json({ message: "Kullanıcı adı ve şifre 3 karakterden az olamaz" });
       return; // Hata durumunda işlemi sonlandır
     }
-
+    
     next();
   } catch (error) {
     next(error);
