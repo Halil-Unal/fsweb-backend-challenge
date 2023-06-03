@@ -54,23 +54,24 @@ const usernameVarmi = async (req, res, next) => {
 
 
 
-const checkPayload = (req,res,next)=>{
+const checkPayload = (req, res, next) => {
   try {
-    let {username,password,email} = req.body;
-    if(!username || !password|| !email){
-      res.status(400).json({messsage:"Eksik alan var"});
-    }if(username.length<3 || password.length<3){
-      res.status(400).json({messsage:"Kullanıcı adı ve şifre 3 karakterden az olamaz"});
+    let { username, password, email } = req.body;
+    if (!username || !password || !email) {
+      res.status(400).json({ message: "Eksik alan var" });
+      return; // Hata durumunda işlemi sonlandır
     }
-    
-    
-    else{
-      next();
+    if (username.length < 3 || password.length < 3) {
+      res.status(400).json({ message: "Kullanıcı adı ve şifre 3 karakterden az olamaz" });
+      return; // Hata durumunda işlemi sonlandır
     }
+
+    next();
   } catch (error) {
     next(error);
   }
 }
+
 
 module.exports = {
   sinirli,
