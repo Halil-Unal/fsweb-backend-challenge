@@ -65,3 +65,10 @@ Workintech programını tamamladığında şirketler yaptığın bu projeye de b
 - [ ] Postman'da collection oluşturulmuş ve export edilmiş mi?
 - [ ] Unit ve entegrasyonları testleri yeterli miktarda yazılmış mı?
 
+
+1-http://localhost:9000/api/users (token varsa kullanıcıları getirir) GET
+2-http://localhost:9000/api/users (ÜYE LOGİN YAPMIŞSA POST ATABİLİR) POST(comment_text gerekli)
+3-http://localhost:9000/api/auth/register  (ÜYE KAYIT OLABİLİR) POST (username,email,password gerekli)
+4-http://localhost:9000/api/auth/login  (üyeliği bulunan biri giriş yapabilir) POST (username,email,password gerekli) TOKEN DÖNECEK
+5-http://localhost:9000/api/users/3 (VERİLEN İD ÜYENİN BİLGİLERİ GELİR) GET (TOKEN LAZIM)
+6-http://localhost:9000/api/auth/logout (TOKEN ile giriş yapan üyenin çıkış yapmasını sağlat) POST
