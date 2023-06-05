@@ -22,8 +22,8 @@ it('[0] sağlık', () => {
 describe('server.js', () => {
   describe('[POST] /api/auth/login', () => {
     it('[1] geçerli kriterlerde doğru mesajı döndürüyor', async () => {
-      const res = await request(server).post('/api/auth/login').send({ username: 'ali',email:"ali@gmail.com", password: '1234' })
-      expect(res.body.message).toMatch(/ali geri/i)
+      const res = await request(server).post('/api/auth/login').send({ username: 'Ali',email:"ali@gmail.com", password: '1234' })
+      expect(res.body.message).toMatch(/Ali geri/i)
     }, 750)
     it('[2] kriterler geçersizse doğru mesaj ve durum kodu', async () => {
       let res = await request(server).post('/api/auth/login').send({ username: 'alis', password: '1234',email:"ali@gmail.com" })
@@ -78,9 +78,9 @@ describe('server.js', () => {
       expect(res.body.message).toMatch(/token gecersizdir/i)
     }, 750)
     it('[7] token geçerliyse doğru kullanıcı listesi', async () => {
-      let res = await request(server).post('/api/auth/login').send({ username: 'ali', password: '1234',email:"ali@gmail.com" })
+      let res = await request(server).post('/api/auth/login').send({ username: 'Ali', password: '1234',email:"ali@gmail.com" })
       res = await request(server).get('/api/users').set('Authorization', res.body.token)
-      expect(res.body).toMatchObject([{ "comment_text": "hava çok güzel", "user_id": 1, "username": "ali" }, {"comment_text": "hatalarından ders çıkar", "user_id": 2, "username": "zeynep" }])
+      expect(res.body).toMatchObject([{ "comment_text": "Hava Çok Güzel", "user_id": 1, "username": "Ali" }, {"comment_text": "Hatalarından Ders Çıkar", "user_id": 2, "username": "Zeynep" }])
     }, 750)
   })
 
