@@ -7,13 +7,15 @@ function bul() {
          .select("u.user_id","u.username","c.comment_text");
 }
 
-function goreBul(filtre) {
-
-    return db("users as u")
-    .leftJoin("comments as c","c.user_id","u.user_id")
-    .select("u.*","c.comment_text")
-    .where("u.username",filtre);
+function goreBul(username, email) {
+  return db("users as u")
+    .leftJoin("comments as c", "c.user_id", "u.user_id")
+    .select("u.*", "c.comment_text")
+    .where(function () {
+      this.where("u.username", username).orWhere("u.email", email);
+    });
 }
+
 
 function idyeGoreBul(user_id) {
 

@@ -27,29 +27,32 @@ const sinirli = (req, res, next) => {
 
 
 const usernameVarmi = async (req, res, next) => {
-
- try {
-  let isExist = await userModel.goreBul(req.body.username);
-  if(isExist && isExist.length>0){
-    let currentUser = isExist[0];
-    let isPasswordMatch = bcryptjs.compareSync(req.body.password,currentUser.password);
-    if(!isPasswordMatch){
+  try {
+    let isExist = await userModel.goreBul(req.body.username, req.body.email);
+    if (isExist && isExist.length > 0) {
+      let currentUser = isExist[0];
+      console.log(currentUser);
+      let isPasswordMatch = bcryptjs.compareSync(
+        req.body.password,
+        currentUser.password
+      );
+      if (!isPasswordMatch || req.body.email !== currentUser.email || req.body.username!==currentUser.username) {
+        res.status(401).json({
+          message: "Geçersiz kriter",
+        });
+      } else {
+        req.currentUser = currentUser;
+        next();
+      }
+    } else {
       res.status(401).json({
-        message: "Geçersiz kriter"
-      })
-    }else{
-      req.currentUser  = currentUser;
-      next();
+        message: "Geçersiz kriter",
+      });
     }
-  }else{
-    res.status(401).json({
-      message: "Geçersiz kriter"
-    })
+  } catch (error) {
+    next(error);
   }
- } catch (error) {
-  next(error);
- }
-}
+};
 
 
 

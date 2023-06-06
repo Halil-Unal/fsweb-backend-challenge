@@ -24,7 +24,7 @@ router.post("/login",checkPayload, usernameVarmi, (req, res, next) => {
     let payload = {
       subject:req.currentUser.user_id,
       username:req.currentUser.username,
-   
+      email:req.currentUser.email
     }
     const token = jwt.sign(payload,JWT_SECRET,{expiresIn:"1d"});
     res.json({
