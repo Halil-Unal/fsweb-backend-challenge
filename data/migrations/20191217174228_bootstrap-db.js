@@ -14,8 +14,8 @@ exports.up = function (knex) {
         .unsigned()
         .references('user_id')
         .inTable('users')
-        .onUpdate('CASCADE') // İlişkili kayıtları güncelle
-        .onDelete('CASCADE') // İlişkili kayıtları sil
+        .onUpdate('CASCADE') 
+        .onDelete('CASCADE') 
         .notNullable()
     });
 };
