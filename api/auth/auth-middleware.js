@@ -31,7 +31,7 @@ const usernameVarmi = async (req, res, next) => {
     let isExist = await userModel.goreBul(req.body.username, req.body.email);
     if (isExist && isExist.length > 0) {
       let currentUser = isExist[0];
-      console.log(currentUser);
+    
       let isPasswordMatch = bcryptjs.compareSync(
         req.body.password,
         currentUser.password
